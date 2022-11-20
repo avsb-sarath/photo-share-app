@@ -26,52 +26,42 @@ class _LoginPageState extends State<LoginPage> {
                 color: Colors.blue,
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                vertical: 16,
-                horizontal: 16,
-              ),
-              child: dataField(
-                textLabel: "Email",
-                fieldBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(16),
-                ),
+            dataField(
+              formFieldPadding:
+                  const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+              textLabel: "Email",
+              fieldBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(16),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 16,
+            dataField(
+              formFieldPadding: const EdgeInsets.symmetric(horizontal: 16),
+              textLabel: "Passowrd",
+              fieldTextLength: 8,
+              textObscure: loginPassVisibility,
+              fieldBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(16),
               ),
-              child: dataField(
-                textLabel: "Passowrd",
-                fieldTextLength: 8,
-                textObscure: loginPassVisibility,
-                fieldBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(16),
-                ),
-                fieldIconSuffix: IconButton(
-                  onPressed: () {
-                    setState(() {
-                      loginPassVisibility = !loginPassVisibility;
-                    });
-                  },
-                  icon: Icon(loginPassVisibility
-                      ? Icons.visibility
-                      : Icons.visibility_off),
-                ),
+              fieldIconSuffix: IconButton(
+                onPressed: () {
+                  setState(() {
+                    loginPassVisibility = !loginPassVisibility;
+                  });
+                },
+                icon: Icon(loginPassVisibility
+                    ? Icons.visibility
+                    : Icons.visibility_off),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 16),
-              child: ElevatedButton(
-                onPressed: () {},
-                child: appText(data: "Login"),
-              ),
+            appButton(
+              buttonPadding: const EdgeInsets.symmetric(vertical: 16),
+              buttonName: appText(data: "Login"),
+              buttonFunction: () {},
             ),
-            ElevatedButton.icon(
-              onPressed: () {},
-              icon: const Icon(Icons.facebook),
-              label: appText(data: "Login with Facebook"),
+            appButtonIcon(
+              buttonName: appText(data: "Login with Facebook"),
+              buttonIcon: const Icon(Icons.facebook),
+              buttonFunction: () {},
             ),
           ],
         ),

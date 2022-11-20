@@ -21,6 +21,8 @@ appText({
 
 //Data Field
 dataField({
+  formFieldPadding,
+  fieldController,
   textLabel,
   textObscure,
   fieldChanged,
@@ -30,19 +32,58 @@ dataField({
   fieldBorder,
   fieldValidator,
   fieldTextLength,
+  fieldFocus,
+  fieldKeybord,
 }) {
-  return TextFormField(
-    onChanged: fieldChanged,
-    onFieldSubmitted: fieldSubmited,
-    validator: fieldValidator,
-    maxLength: fieldTextLength,
-    obscureText: textObscure ?? false,
-    decoration: InputDecoration(
-      labelText: textLabel,
-      prefixIcon: fieldIconPrefix,
-      suffixIcon: fieldIconSuffix,
-      border: fieldBorder,
-      counterText: "",
+  return Padding(
+    padding: formFieldPadding,
+    child: TextFormField(
+      controller: fieldController,
+      keyboardType: fieldKeybord,
+      onChanged: fieldChanged,
+      onFieldSubmitted: fieldSubmited,
+      validator: fieldValidator,
+      maxLength: fieldTextLength,
+      obscureText: textObscure ?? false,
+      decoration: InputDecoration(
+        labelText: textLabel,
+        prefixIcon: fieldIconPrefix,
+        suffixIcon: fieldIconSuffix,
+        border: fieldBorder,
+        counterText: "",
+      ),
+    ),
+  );
+}
+
+// Elevated Button
+appButton({
+  buttonPadding,
+  buttonFunction,
+  buttonName,
+}) {
+  return Padding(
+    padding: buttonPadding,
+    child: ElevatedButton(
+      onPressed: buttonFunction,
+      child: buttonName,
+    ),
+  );
+}
+
+// Elevated Button Icon
+appButtonIcon({
+  buttonPadding,
+  buttonFunction,
+  buttonIcon,
+  buttonName,
+}) {
+  return Padding(
+    padding: buttonPadding,
+    child: ElevatedButton.icon(
+      onPressed: buttonFunction,
+      icon: buttonIcon,
+      label: buttonName,
     ),
   );
 }
